@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  db:
+    image: library/postgres:13-alpine
+    environment:
+      - POSTGRES_USER=mednet
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=mednet
+    ports:
+      - 5433:5432
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
+    command: bash -c "cd src && ./manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8040:8000
+    env_file:
+      - .env
