@@ -27,7 +27,7 @@
                     class="nav-item {% if 'index' in segment %} active {% endif %}">
                     <a href="
                             {% if request.organization.org_type == 'pharmaceutical' %}
-                                {% url 'inventory:product_list_view' %}
+                                {% url 'pharma_inventory:product_list_view' %}
                             {% else %}
                                 /
                             {% endif %}"

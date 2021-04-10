@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 text-end">
-                        <a class="btn btn-primary" type="button" href="{% url 'inventory:product_create_view' %}">Add
+                        <a class="btn btn-primary" type="button" href="{% url 'pharma_inventory:product_create_view' %}">Add
                             new product</a>
                     </div>
                 </div>
@@ -51,12 +51,12 @@
                                             <tr>
                                                 <th scope="row">{{ product.id }}</th>
                                                 <td>
-                                                    <a href="{% url 'inventory:product_detail_view' product.id %}">{{ product.name }}</a>
+                                                    <a href="{% url 'pharma_inventory:product_detail_view' product.id %}">{{ product.name }}</a>
                                                 </td>
                                                 <td>{{ product.group }}</td>
                                                 <td>{{ product.details|truncatewords:5 }}</td>
                                                 <td><a class="btn btn-outline-secondary"
-                                                       href="{% url 'inventory:product_update_view' product.id %}">Edit</a>
+                                                       href="{% url 'pharma_inventory:product_update_view' product.id %}">Edit</a>
                                                 </td>
                                             </tr>
                                         {% endfor %}

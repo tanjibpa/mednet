@@ -6,8 +6,8 @@ from inventory.forms import ProductForm
 from inventory.models import Product
 
 
-class ProductsListView(ListView):
-    template_name = 'inventory/list.html'
+class PharmaProductsListView(ListView):
+    template_name = 'inventory/pharma/list.html'
     context_object_name = 'products'
     paginate_by = 10
 
@@ -15,13 +15,13 @@ class ProductsListView(ListView):
         return Product.objects.filter(producer=self.request.organization)
 
 
-class ProductCreateView(CreateView):
+class PharmaProductCreateView(CreateView):
     model = Product
-    template_name = 'inventory/create.html'
+    template_name = 'inventory/pharma/create.html'
     form_class = ProductForm
 
     def get_success_url(self):
-        return reverse_lazy('inventory:product_detail_view', kwargs={'pk': self.object.id})
+        return reverse_lazy('pharma_inventory:product_detail_view', kwargs={'pk': self.object.id})
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -29,9 +29,9 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(UpdateView):
+class PharmaProductUpdateView(UpdateView):
     model = Product
-    template_name = 'inventory/update.html'
+    template_name = 'inventory/pharma/update.html'
     form_class = ProductForm
     queryset = Product.objects.all()
 
@@ -39,8 +39,8 @@ class ProductUpdateView(UpdateView):
         return reverse_lazy('inventory:product_detail_view', kwargs={'pk': self.object.id})
 
 
-class ProductDetailView(DetailView):
+class PharmaProductDetailView(DetailView):
     model = Product
-    template_name = 'inventory/detail.html'
+    template_name = 'inventory/pharma/detail.html'
     queryset = Product.objects.all()
     context_object_name = 'product'

@@ -22,7 +22,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <form role="form" method="post"
-                                                  action="{% url 'inventory:product_create_view' %}">
+                                                  action="{% url 'pharma_inventory:product_create_view' %}">
 
                                                 {% csrf_token %}
 
@@ -42,7 +42,7 @@
                                                     <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                                <a href="{% url 'inventory:product_list_view' %}"
+                                                <a href="{% url 'pharma_inventory:product_list_view' %}"
                                                    class="btn btn-primary">Cancel</a>
 
                                             </form>

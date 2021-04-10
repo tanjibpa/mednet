@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <form role="form" method="post" action="{% url 'inventory:product_update_view' product.id %}">
+                                        <form role="form" method="post" action="{% url 'pharma_inventory:product_update_view' product.id %}">
 
                                             {% csrf_token %}
 
@@ -41,7 +41,7 @@
 <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>
-                                            <a href="{% url 'inventory:product_detail_view' product.id %}" class="btn btn-primary">Cancel</a>
+                                            <a href="{% url 'pharma_inventory:product_detail_view' product.id %}" class="btn btn-primary">Cancel</a>
                                         </form>
                                     </div>
                                 </div>
