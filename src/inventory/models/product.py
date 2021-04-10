@@ -12,3 +12,10 @@ class Product(BaseModel):
     class Meta:
         ordering = ['-created_at']
         db_table = 'products'
+        permissions = [
+            ('pharma_can_create', 'Pharma can create product'),
+            ('pharma_can_update', 'Pharma can update product'),
+            ('pharma_can_delete', 'Pharma_can_delete_product'),
+            ('pharma_can_view', 'Pharma can view product'),
+            ('pharma_can_view_list', 'Pharma can view product list'),
+        ]
