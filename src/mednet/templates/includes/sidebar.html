@@ -13,6 +13,14 @@
         <div class="navbar-content scroll-div">
             <ul class="nav pcoded-inner-navbar">
                 <li class="nav-item pcoded-menu-caption">
+                    <label>User info</label>
+                </li>
+                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+                    class="nav-item {% if 'index' in segment %} active {% endif %}">
+                    <p class="nav-link">{{ request.user.username }}</p>
+                    <p class="nav-link">{{ request.organization.org_type }}</p>
+                </li>
+                <li class="nav-item pcoded-menu-caption">
                     <label>Navigation</label>
                 </li>
                 <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
@@ -27,7 +35,7 @@
                             class="pcoded-mtext">Dashboard</span></a>
                 </li>
                 <li data-username="Disabled Menu" class="nav-item">
-{#                    <a href="{% url 'authentication:logout' %}" class="nav-link">#}
+                    {#                    <a href="{% url 'authentication:logout' %}" class="nav-link">#}
                     <span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Logout</span>
                     </a>
                 </li>

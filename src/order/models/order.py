@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from base.models import BaseModel
+from order.models.managers import SupplierOrderList
 
 
 class Order(BaseModel):
@@ -16,6 +17,9 @@ class Order(BaseModel):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     producer = models.ForeignKey('organization.Organization', on_delete=models.CASCADE, related_name='orders')
     status = models.CharField(max_length=20, choices=OrderStatus.choices, default=OrderStatus.ACTIVE)
+
+    objects = models.Manager()
+    supplier_order_objects = SupplierOrderList()
 
     class Meta:
         db_table = 'orders'
