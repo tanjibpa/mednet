@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'organization',
     'inventory',
     'authentication',
+    'order',
     'django_extensions'
 ]
 

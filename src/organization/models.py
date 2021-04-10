@@ -7,8 +7,9 @@ from base.models import BaseModel
 
 class Organization(BaseModel):
     class OrgType(models.TextChoices):
-        PRODUCER = 'producer', _('Producer')
-        SELLER = 'seller', _('Seller')
+        PHARMACEUTICAL = 'pharmaceutical', _('Pharmaceutical')
+        SUPPLIER = 'supplier', _('Supplier')
+        RETAILER = 'retailer', _('Retailer')
 
     name = models.CharField(max_length=255)
     org_type = models.CharField(max_length=20, choices=OrgType.choices)

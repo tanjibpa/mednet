@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from authentication.forms import RegisterForm, LoginForm
 
@@ -17,13 +18,17 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+
+                if not request.organization:
+                    return redirect(reverse('organization:organization_form_view'))
+
                 return redirect("/")
             else:
                 msg = 'Invalid credentials'
         else:
             msg = 'Error validating the form'
 
-    return render(request, "accounts/login.html", {"form": form, "msg" : msg})
+    return render(request, "accounts/login.html", {"form": form, "msg": msg})
 
 
 def register_user(request):

@@ -1,0 +1,64 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Forms {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- [ Main Content ] start -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Create Product</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <form role="form" method="post"
+                                                  action="{% url 'inventory:product_create_view' %}">
+
+                                                {% csrf_token %}
+
+                                                <div class="form-group">
+                                                    <label for="{{ form.name.id_for_label }}">Product Name</label>
+                                                    {{ form.name }}
+                                                    <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="{{ form.group.id_for_label }}">Product group</label>
+                                                    {{ form.group }}
+                                                    <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="{{ form.details.id_for_label }}">Details</label>
+                                                    {{ form.details }}
+                                                    <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <a href="{% url 'inventory:product_list_view' %}"
+                                                   class="btn btn-primary">Cancel</a>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Main Content ] end -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
