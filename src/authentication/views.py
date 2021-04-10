@@ -22,7 +22,11 @@ def login_view(request):
                 if not request.organization:
                     return redirect(reverse('organization:organization_form_view'))
 
-                return redirect("/")
+                org_type_redirects = {
+                    'pharmaceutical': reverse('pharma_inventory:product_list_view')
+                }
+
+                return redirect(org_type_redirects[str(request.organization.org_type)])
             else:
                 msg = 'Invalid credentials'
         else:
