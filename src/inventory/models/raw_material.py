@@ -18,6 +18,6 @@ class RawMaterial(BaseModel):
             ('supplier_can_delete', 'Supplier can delete raw material'),
             ('supplier_can_view', 'Supplier can view raw material'),
             ('supplier_can_view_list', 'Supplier can view raw material list'),
-            ('pharma_can_view', 'Pharmaceutical can view raw material'),
-            ('pharma_can_view_list', 'Pharmaceutical can view raw material list'),
+            ('pharma_can_view_raw_material', 'Pharmaceutical can view raw material'),
+            ('pharma_can_view_raw_material_list', 'Pharmaceutical can view raw material list'),
         ]

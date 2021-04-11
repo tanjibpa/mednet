@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 
 from inventory.forms import ProductForm
-from inventory.models import Product
+from inventory.models import Product, RawMaterial
 
 
 class PharmaProductsListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -48,3 +48,19 @@ class PharmaProductDetailView(LoginRequiredMixin, PermissionRequiredMixin, Detai
     queryset = Product.objects.all()
     context_object_name = 'product'
     permission_required = ('inventory.pharma_can_view',)
+
+
+class PharmaRawMaterialListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    model = RawMaterial
+    template_name = 'inventory/pharma/raw_material_list.html'
+    queryset = RawMaterial.objects.all()
+    context_object_name = 'raw_materials'
+    permission_required = ('inventory.pharma_can_view_raw_material_list',)
+
+
+class PharmaRawMaterialDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
+    model = RawMaterial
+    template_name = 'inventory/pharma/raw_material_detail.html'
+    queryset = RawMaterial.objects.all()
+    context_object_name = 'raw_material'
+    permission_required = ('inventory.pharma_can_view_raw_material',)
