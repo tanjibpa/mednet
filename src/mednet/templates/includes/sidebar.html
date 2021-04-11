@@ -1,45 +1,51 @@
 <nav class="pcoded-navbar">
-    <div class="navbar-wrapper">
-        <div class="navbar-brand header-logo">
-            <a target="_blank"
-               href="#" class="b-brand">
-                <div class="b-bg">
-                    <i class="feather icon-trending-up"></i>
-                </div>
-                <span class="b-title">MedNet</span>
-            </a>
-            <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+  <div class="navbar-wrapper">
+    <div class="navbar-brand header-logo">
+      <a target="_blank"
+         href="#" class="b-brand">
+        <div class="b-bg">
+          <i class="feather icon-trending-up"></i>
         </div>
-        <div class="navbar-content scroll-div">
-            <ul class="nav pcoded-inner-navbar">
-                <li class="nav-item pcoded-menu-caption">
-                    <label>User info</label>
-                </li>
-                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
-                    class="nav-item {% if 'index' in segment %} active {% endif %}">
-                    <p class="nav-link">{{ request.user.username }}</p>
-                    <p class="nav-link">{{ request.organization.org_type }}</p>
-                </li>
-                <li class="nav-item pcoded-menu-caption">
-                    <label>Navigation</label>
-                </li>
-                <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
-                    class="nav-item {% if 'index' in segment %} active {% endif %}">
-                    <a href="
-                            {% if request.organization.org_type == 'pharmaceutical' %}
-                                {% url 'pharma_inventory:product_list_view' %}
-                            {% else %}
-                                /
-                            {% endif %}"
-                       class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span
-                            class="pcoded-mtext">Dashboard</span></a>
-                </li>
-                <li data-username="Disabled Menu" class="nav-item">
-                    {#                    <a href="{% url 'authentication:logout' %}" class="nav-link">#}
-                    <span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <span class="b-title">MedNet</span>
+      </a>
+      <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
     </div>
+    <div class="navbar-content scroll-div">
+      <ul class="nav pcoded-inner-navbar">
+        <li class="nav-item pcoded-menu-caption">
+          <label>User info</label>
+        </li>
+        <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+            class="nav-item {% if 'index' in segment %} active {% endif %}">
+          <p class="nav-link">{{ request.user.username }}</p>
+          <p class="nav-link">{{ request.organization.org_type }}</p>
+        </li>
+        <li class="nav-item pcoded-menu-caption">
+          <label>Navigation</label>
+        </li>
+        {% if request.organization.org_type == 'pharmaceutical' %}
+          <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+              class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a href="{% url 'pharma_inventory:product_list_view' %}" class="nav-link">
+              <span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                    class="pcoded-mtext">Dashboard</span>
+            </a>
+          </li>
+        {% elif request.organization.org_type == 'supplier' %}
+          <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+              class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a href="{% url 'supplier_inventory:raw_material_list_view' %}" class="nav-link">
+              <span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                    class="pcoded-mtext">Dashboard</span>
+            </a>
+          </li>
+        {% endif %}
+        <li data-username="Disabled Menu" class="nav-item">
+          {#                    <a href="{% url 'authentication:logout' %}" class="nav-link">#}
+          <span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

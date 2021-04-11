@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %}Product Detail{% endblock %}
+{% block title %}Raw Material Detail{% endblock %}
 
 {% block stylesheets %}{% endblock stylesheets %}
 
@@ -18,11 +18,11 @@
                 <div class="card-body">
                   <dl class="row">
                     <dt class="col-sm-3">Name</dt>
-                    <dd class="col-sm-9">{{ product.name }}</dd>
-                    <dt class="col-sm-3">Group</dt>
-                    <dd class="col-sm-9">{{ product.group }}</dd>
+                    <dd class="col-sm-9">{{ raw_material.name }}</dd>
+                    <dt class="col-sm-3">Price</dt>
+                    <dd class="col-sm-9">{{ raw_material.price }}</dd>
                     <dt class="col-sm-3">Details</dt>
-                    <dd class="col-sm-9">{{ product.details }}</dd>
+                    <dd class="col-sm-9">{{ raw_material.details }}</dd>
                   </dl>
                 </div>
               </div>
@@ -30,8 +30,8 @@
           </div>
           <div class="row">
             <div class="col-sm-3">
-              <a href="{% url 'pharma_inventory:product_update_view' product.id %}" class="btn btn-primary">Edit
-                Product</a>
+              <a href="{% url 'supplier_inventory:raw_material_update_view' raw_material.id %}" class="btn btn-primary">Edit
+                Raw Material</a>
 
             </div>
           </div>
