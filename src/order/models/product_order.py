@@ -6,7 +6,7 @@ from base.models import BaseModel
 from order.models.managers import SupplierOrderList
 
 
-class Order(BaseModel):
+class ProductOrder(BaseModel):
     class OrderStatus(models.TextChoices):
         ACTIVE = 'active', _('active')
         REJECTED = 'rejected', _('rejected')
@@ -22,7 +22,7 @@ class Order(BaseModel):
     supplier_order_objects = SupplierOrderList()
 
     class Meta:
-        db_table = 'orders'
+        db_table = 'product_orders'
         ordering = ['-created_at']
         permissions = [
             ('supplier_order_list', 'Can view order request list for the supplier'),

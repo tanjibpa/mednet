@@ -9,6 +9,9 @@ class RawMaterial(BaseModel):
     supplier = models.ForeignKey('organization.Organization', on_delete=models.CASCADE, related_name='raw_materials')
     price = models.FloatField()
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         db_table = 'raw_materials'
         ordering = ['-created_at']

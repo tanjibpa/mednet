@@ -31,6 +31,13 @@
                     class="pcoded-mtext">Dashboard</span>
             </a>
           </li>
+          <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+              class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a href="{% url 'pharma_inventory:raw_material_list_view' %}" class="nav-link">
+              <span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                    class="pcoded-mtext">Raw Materials</span>
+            </a>
+          </li>
         {% elif request.organization.org_type == 'supplier' %}
           <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
               class="nav-item {% if 'index' in segment %} active {% endif %}">

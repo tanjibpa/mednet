@@ -1,8 +1,9 @@
 from django.urls import path
 
-from order.views import PharmaceuticalOrderCreateView
+from order.views import PharmaceuticalRawMaterialOrderCreateView, PharmaceuticalRawMaterialOrderListView
 
 app_name = 'pharmaceutical_order'
 urlpatterns = [
-    path('<int:product_id>/create', PharmaceuticalOrderCreateView.as_view(), name='order_create_view'),
+    path('create', PharmaceuticalRawMaterialOrderCreateView.as_view(), name='order_create_view'),
+    path('list', PharmaceuticalRawMaterialOrderListView.as_view(), name='order_list_view'),
 ]
