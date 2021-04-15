@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 
 from authentication.forms import RegisterForm, LoginForm
+from base.helpers import has_organization
 
 
 def login_view(request):
@@ -19,7 +20,9 @@ def login_view(request):
             if user is not None:
                 login(request, user)
 
-                if not request.organization:
+                organization = has_organization(user)
+
+                if not organization:
                     return redirect(reverse('organization:organization_form_view'))
 
                 org_type_redirects = {
@@ -27,7 +30,7 @@ def login_view(request):
                     'supplier': reverse('supplier_inventory:raw_material_list_view'),
                 }
 
-                return redirect(org_type_redirects[str(request.organization.org_type)])
+                return redirect(org_type_redirects[str(organization.org_type)])
             else:
                 msg = 'Invalid credentials'
         else:
