@@ -30,6 +30,7 @@ class RawMaterialOrder(BaseModel):
             ('pharma_can_create_order_raw_material', 'Pharma can create order for raw material'),
             ('pharma_can_cancel_order_raw_material', 'Pharma can cancel order for raw material'),
             ('pharma_can_view_ordered_raw_material', 'Pharma can view ordered raw material'),
+            ('supplier_can_edit_order_raw_material', 'Supplier can edit order for raw material'),
             ('supplier_can_fulfill_order_raw_material', 'Supplier can fulfill order for raw material'),
             ('supplier_can_reject_order_raw_material', 'Supplier can reject order for raw material'),
             ('supplier_can_view_order_raw_material_list', 'Supplier can view order list for raw material'),
