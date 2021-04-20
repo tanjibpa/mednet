@@ -13,9 +13,9 @@ class PharmaceuticalRawMaterialOrderCreateView(LoginRequiredMixin, PermissionReq
     form_class = OrderForm
     template_name = 'order/pharma/create.html'
 
-    def form_invalid(self, form):
-        # print(form.errors)
-        return super().form_valid(form)
+    # def form_invalid(self, form):
+    #     # print(form.errors)
+    #     return super().form_valid(form)
 
     def form_valid(self, form):
         self.object = form.save(commit=False)

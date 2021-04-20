@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Order Raw Material {% endblock %}
+{% block title %} Update Raw Material {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -16,34 +16,34 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h5>Order Raw Material</h5>
+                  <h5>Update Raw Material</h5>
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-6">
                       <form role="form" method="post"
-                            action="{% url 'pharmaceutical_order:order_create_view' %}">
+                            action="{% url 'supplier_order:order_update_view' object.id %}">
 
                         {% csrf_token %}
 
                         <div class="form-group">
-                          <label for="{{ form.raw_material.id_for_label }}">Raw Material Name</label>
-                          {{ form.raw_material }}
+                          <label for="{{ form.name.id_for_label }}">Product Name</label>
+                          {{ form.name }}
                           <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
                         </div>
-{#                        <div class="form-group">#}
-{#                          <label for="{{ form.total_price.id_for_label }}">Price</label>#}
-{#                          {{ form.total_price }}#}
-{#                          <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->#}
-{#                        </div>#}
                         <div class="form-group">
-                          <label for="{{ form.quantity.id_for_label }}">Quantity</label>
-                          {{ form.quantity }}
+                          <label for="{{ form.group.id_for_label }}">Product group</label>
+                          {{ form.group }}
+                          <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+                        </div>
+                        <div class="form-group">
+                          <label for="{{ form.details.id_for_label }}">Details</label>
+                          {{ form.details }}
                           <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{% url 'pharmaceutical_order:order_list_view' %}"
-                           class="btn btn-primary">Cancel</a>
+{#                        <a href="{% url 'supplier_order:raw_material_order_list_view' %}"#}
+{#                           class="btn btn-primary">Cancel</a>#}
 
                       </form>
                     </div>
