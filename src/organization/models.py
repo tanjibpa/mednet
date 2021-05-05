@@ -7,18 +7,23 @@ from base.models import BaseModel
 
 class Organization(BaseModel):
     class OrgType(models.TextChoices):
-        PHARMACEUTICAL = 'pharmaceutical', _('Pharmaceutical')
-        SUPPLIER = 'supplier', _('Supplier')
-        RETAILER = 'retailer', _('Retailer')
+        PHARMACEUTICAL = "pharmaceutical", _("Pharmaceutical")
+        SUPPLIER = "supplier", _("Supplier")
+        RETAILER = "retailer", _("Retailer")
 
     name = models.CharField(max_length=255)
     org_type = models.CharField(max_length=20, choices=OrgType.choices)
     contact = models.CharField(max_length=20)
     address = models.TextField(null=True, blank=True)
-    status = models.CharField(max_length=20, choices=BaseModel.StatusChoices.choices,
-                              default=BaseModel.StatusChoices.INACTIVE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='organizations')
+    status = models.CharField(
+        max_length=20,
+        choices=BaseModel.StatusChoices.choices,
+        default=BaseModel.StatusChoices.INACTIVE,
+    )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="organizations"
+    )
 
     class Meta:
-        ordering = ['-created_at']
-        db_table = 'organizations'
+        ordering = ["-created_at"]
+        db_table = "organizations"

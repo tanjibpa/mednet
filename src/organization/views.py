@@ -8,9 +8,9 @@ from organization.models import Organization
 
 
 class OrganizationCreateView(CreateView):
-    template_name = 'organization/organization.html'
+    template_name = "organization/organization.html"
     form_class = OrganizationForm
-    success_url = reverse_lazy('organization:organization_details_view')
+    success_url = reverse_lazy("organization:organization_details_view")
 
     def form_valid(self, form: Form):
         self.object = form.save(commit=False)
@@ -19,26 +19,26 @@ class OrganizationCreateView(CreateView):
 
 
 class OrganizationEditView(UpdateView):
-    template_name = 'organization/organization_edit.html'
+    template_name = "organization/organization_edit.html"
     form_class = OrganizationForm
-    success_url = reverse_lazy('organization:organization_details_view')
+    success_url = reverse_lazy("organization:organization_details_view")
 
     def get_object(self, queryset=None):
         return Organization.objects.get(user=self.request.user)
 
 
 class OrganizationDetailView(TemplateView):
-    template_name = 'organization/details.html'
+    template_name = "organization/details.html"
 
     def get_queryset(self):
         return Organization.objects.filter(user=self.request.user)
 
     def get(self, request, *args, **kwargs):
         if not self.get_queryset():
-            return redirect(reverse_lazy('organization:organization_form_view'))
+            return redirect(reverse_lazy("organization:organization_form_view"))
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['organization'] = self.get_queryset()[0]
+        context["organization"] = self.get_queryset()[0]
         return context

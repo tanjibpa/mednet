@@ -10,7 +10,12 @@ class OrderForm(ModelForm):
 
     class Meta:
         model = RawMaterialOrder
-        exclude = ('created_by', 'supplier', 'status', 'total_price',)
+        exclude = (
+            "created_by",
+            "supplier",
+            "status",
+            "total_price",
+        )
         # widgets = {
         #     'raw_material': ChoiceField(
         #         attrs={

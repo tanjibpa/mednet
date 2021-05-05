@@ -23,18 +23,18 @@ def login_view(request):
                 organization = has_organization(user)
 
                 if not organization:
-                    return redirect(reverse('organization:organization_form_view'))
+                    return redirect(reverse("organization:organization_form_view"))
 
                 org_type_redirects = {
-                    'pharmaceutical': reverse('pharma_inventory:product_list_view'),
-                    'supplier': reverse('supplier_inventory:raw_material_list_view'),
+                    "pharmaceutical": reverse("pharma_inventory:product_list_view"),
+                    "supplier": reverse("supplier_inventory:raw_material_list_view"),
                 }
 
                 return redirect(org_type_redirects[str(organization.org_type)])
             else:
-                msg = 'Invalid credentials'
+                msg = "Invalid credentials"
         else:
-            msg = 'Error validating the form'
+            msg = "Error validating the form"
 
     return render(request, "accounts/login.html", {"form": form, "msg": msg})
 
@@ -59,13 +59,17 @@ def register_user(request):
             # return redirect("/login/")
 
         else:
-            msg = 'Form is not valid'
+            msg = "Form is not valid"
     else:
         form = RegisterForm()
 
-    return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
+    return render(
+        request,
+        "accounts/register.html",
+        {"form": form, "msg": msg, "success": success},
+    )
 
 
 def logout_view(request):
     logout(request)
-    return redirect(reverse('login'))
+    return redirect(reverse("login"))

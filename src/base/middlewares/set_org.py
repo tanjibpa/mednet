@@ -16,7 +16,7 @@ class SetOrganization:
         org = None
         if not request.user.is_anonymous:
             org = self.get_organization(request.user)
-        setattr(request, 'organization', org)
+        setattr(request, "organization", org)
 
         response = self.get_response(request)
         return response
