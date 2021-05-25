@@ -10,6 +10,7 @@ class Product(BaseModel):
     producer = models.ForeignKey(
         "organization.Organization", on_delete=models.CASCADE, related_name="products"
     )
+    price = models.FloatField()
 
     class Meta:
         ordering = ["-created_at"]
@@ -20,4 +21,9 @@ class Product(BaseModel):
             ("pharma_can_delete", "Pharma_can_delete_product"),
             ("pharma_can_view", "Pharma can view product"),
             ("pharma_can_view_list", "Pharma can view product list"),
+            ("retailer_can_view_list", "Retailer can view list"),
+            ("retailer_can_view_detail", "Retailer can view detail"),
         ]
+
+    def __str__(self):
+        return self.name

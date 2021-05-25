@@ -1,11 +1,11 @@
 from django import forms
 from django.forms import ModelForm, TextInput, ChoiceField, ModelChoiceField
 
-from inventory.models import RawMaterial
-from order.models import RawMaterialOrder
+from inventory.models import RawMaterial, Product
+from order.models import RawMaterialOrder, ProductOrder
 
 
-class OrderForm(ModelForm):
+class RawMaterialOrderForm(ModelForm):
     raw_material = forms.ModelChoiceField(queryset=RawMaterial.objects.all())
 
     class Meta:
@@ -24,3 +24,12 @@ class OrderForm(ModelForm):
         #         }
         #     )
         # }
+
+
+class ProductOrderForm(ModelForm):
+    class Meta:
+        model = ProductOrder
+        exclude = (
+            "created_at",
+            "updated_at"
+        )

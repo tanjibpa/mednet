@@ -6,4 +6,5 @@ urlpatterns = [
         "pharmaceutical/",
         include("order.urls.pharmaceutical", namespace="pharmaceutical_order"),
     ),
+    path("retailer/", include("order.urls.retailer", namespace="retailer_order")),
 ]

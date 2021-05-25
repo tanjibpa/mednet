@@ -31,4 +31,6 @@ class ProductOrder(BaseModel):
         permissions = [
             ("supplier_order_list", "Can view order request list for the supplier"),
             ("pharma_order_list", "Can view order list made by pharma"),
+            ("retailer_order_list", "Can view order list made by retailer"),
+            ("retailer_create_order", "Retailer can create order"),
         ]

@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, RedirectView
 
-from order.forms import OrderForm
+from order.forms import RawMaterialOrderForm
 from order.models import RawMaterialOrder
 
 
@@ -20,7 +20,7 @@ class SupplierOrderListView(LoginRequiredMixin, PermissionRequiredMixin, ListVie
 
 class SupplierOrderUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = "order/supplier/update.html"
-    form_class = OrderForm
+    form_class = RawMaterialOrderForm
     permission_required = ("order.supplier_can_edit_order_raw_material",)
 
     def get_queryset(self):

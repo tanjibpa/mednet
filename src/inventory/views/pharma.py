@@ -3,7 +3,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 
 from inventory.forms import ProductForm
-from inventory.models import Product, RawMaterial
+from inventory.forms.batch import BatchForm
+from inventory.models import Product, RawMaterial, Batch
 
 
 class PharmaProductsListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -70,3 +71,33 @@ class PharmaRawMaterialDetailView(
     queryset = RawMaterial.objects.all()
     context_object_name = "raw_material"
     permission_required = ("inventory.pharma_can_view_raw_material",)
+
+
+class PharmaBatchCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = Batch
+    form_class = BatchForm
+    template_name = "inventory/pharma/create_batch.html"
+    queryset = Batch.objects.all()
+    # context_object_name = "batches"
+    permission_required = ("inventory.pharma_can_create_batch",)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "pharma_inventory:batch_detail_view", kwargs={"pk": self.object.id}
+        )
+
+
+class PharmaBatchDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
+    model = Batch
+    template_name = "inventory/pharma/batch_detail.html"
+    queryset = Batch.objects.all()
+    context_object_name = "batch"
+    permission_required = ("inventory.pharma_can_view_batch",)
+
+
+class PharmaBatchListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    model = Batch
+    queryset = Batch.objects.all()
+    template_name = "inventory/pharma/batch_list.html"
+    context_object_name = "batches"
+    permission_required = ("inventory.pharma_can_view_batch",)

@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import RedirectView, ListView, CreateView
 
 from inventory.models import RawMaterial
-from order.forms import OrderForm
+from order.forms import RawMaterialOrderForm
 from order.models import RawMaterialOrder
 
 
@@ -12,7 +12,7 @@ class PharmaceuticalRawMaterialOrderCreateView(
 ):
     permission_required = ("order.pharma_can_create_order_raw_material",)
     success_url = reverse_lazy("pharmaceutical_order:order_list_view")
-    form_class = OrderForm
+    form_class = RawMaterialOrderForm
     template_name = "order/pharma/create.html"
 
     # def form_invalid(self, form):

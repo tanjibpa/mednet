@@ -45,6 +45,13 @@
                     class="pcoded-mtext">Orders</span>
             </a>
           </li>
+          <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+              class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a href="{% url 'pharma_inventory:batch_list_view' %}" class="nav-link">
+              <span class="pcoded-micon"></span><span
+                    class="pcoded-mtext">Batch List</span>
+            </a>
+          </li>
         {% elif request.organization.org_type == 'supplier' %}
           <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
               class="nav-item {% if 'index' in segment %} active {% endif %}">

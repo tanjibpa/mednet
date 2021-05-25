@@ -7,6 +7,9 @@ from inventory.views import (
     PharmaProductUpdateView,
     PharmaRawMaterialDetailView,
     PharmaRawMaterialListView,
+    PharmaBatchCreateView,
+    PharmaBatchDetailView,
+    PharmaBatchListView,
 )
 
 app_name = "pharma_inventory"
@@ -29,4 +32,7 @@ urlpatterns = [
         PharmaRawMaterialListView.as_view(),
         name="raw_material_list_view",
     ),
+    path("create_batch", PharmaBatchCreateView.as_view(), name="batch_create_view"),
+    path("batch/<int:pk>", PharmaBatchDetailView.as_view(), name="batch_detail_view"),
+    path("batch_list", PharmaBatchListView.as_view(), name="batch_list_view"),
 ]

@@ -28,6 +28,7 @@ def login_view(request):
                 org_type_redirects = {
                     "pharmaceutical": reverse("pharma_inventory:product_list_view"),
                     "supplier": reverse("supplier_inventory:raw_material_list_view"),
+                    "retailer": reverse("retailer_inventory:product_list_view"),
                 }
 
                 return redirect(org_type_redirects[str(organization.org_type)])
