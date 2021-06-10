@@ -6,6 +6,9 @@ from inventory.forms import ProductForm
 from inventory.forms.batch import BatchForm
 from inventory.models import Product, RawMaterial, Batch
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 class PharmaProductsListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     template_name = "inventory/pharma/list.html"
@@ -14,6 +17,7 @@ class PharmaProductsListView(LoginRequiredMixin, PermissionRequiredMixin, ListVi
     permission_required = ("inventory.pharma_can_view_list",)
 
     def get_queryset(self):
+        print(self.request.organization)
         return Product.objects.filter(producer=self.request.organization)
 
 
@@ -29,6 +33,7 @@ class PharmaProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, Creat
         )
 
     def form_valid(self, form):
+        logger.info("form valid called")
         self.object = form.save(commit=False)
         self.object.producer = self.request.organization
         return super().form_valid(form)
@@ -43,7 +48,7 @@ class PharmaProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, Updat
 
     def get_success_url(self):
         return reverse_lazy(
-            "inventory:product_detail_view", kwargs={"pk": self.object.id}
+            "pharma_inventory:product_detail_view", kwargs={"pk": self.object.id}
         )
 
 

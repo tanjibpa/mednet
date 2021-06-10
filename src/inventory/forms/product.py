@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm, TextInput, NumberInput
 
 from inventory.models import Product
 
@@ -13,4 +13,7 @@ class ProductForm(ModelForm):
             "details": TextInput(
                 attrs={"placeholder": "Details", "class": "form-control"}
             ),
+            "price": NumberInput(
+                attrs={"placeholder": 0.0, "class": "form-control"}
+            )
         }

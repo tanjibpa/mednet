@@ -67,6 +67,14 @@
                     class="pcoded-mtext">Requested Orders</span>
             </a>
           </li>
+        {% elif request.organization.org_type == 'retailer' %}
+          <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+              class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a href="{% url 'retailer_inventory:product_list_view' %}" class="nav-link">
+              <span class="pcoded-micon"><i class="feather icon-home"></i></span><span
+                    class="pcoded-mtext">Dashboard</span>
+            </a>
+          </li>
         {% endif %}
         <li data-username="Disabled Menu" class="nav-item">
                               <a href="{% url 'logout' %}" class="nav-link">

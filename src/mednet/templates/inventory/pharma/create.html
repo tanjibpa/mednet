@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6">21
                       <form role="form" method="post"
                             action="{% url 'pharma_inventory:product_create_view' %}">
 
@@ -39,6 +39,11 @@
                         <div class="form-group">
                           <label for="{{ form.details.id_for_label }}">Details</label>
                           {{ form.details }}
+                          <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+                        </div>
+                        <div class="form-group">
+                          <label for="{{ form.price.id_for_label }}">Price</label>
+                          {{ form.price }}
                           <!--                                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

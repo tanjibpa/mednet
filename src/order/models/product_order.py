@@ -21,6 +21,7 @@ class ProductOrder(BaseModel):
     status = models.CharField(
         max_length=20, choices=OrderStatus.choices, default=OrderStatus.ACTIVE
     )
+    quantity = models.IntegerField()
 
     objects = models.Manager()
     supplier_order_objects = SupplierOrderList()

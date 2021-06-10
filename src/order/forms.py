@@ -27,9 +27,8 @@ class RawMaterialOrderForm(ModelForm):
 
 
 class ProductOrderForm(ModelForm):
+    product = forms.ModelChoiceField(queryset=Product.objects.all())
+
     class Meta:
         model = ProductOrder
-        exclude = (
-            "created_at",
-            "updated_at"
-        )
+        exclude = ("created_at", "updated_at", "status")

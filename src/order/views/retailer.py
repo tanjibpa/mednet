@@ -4,6 +4,7 @@ from django.views.generic import CreateView, ListView
 
 from inventory.models import Product
 from order.forms import ProductOrderForm
+from order.models import ProductOrder
 
 
 class RetailerOrderProduct(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
@@ -14,3 +15,13 @@ class RetailerOrderProduct(LoginRequiredMixin, PermissionRequiredMixin, CreateVi
 
     def form_valid(self, form):
         return super().form_valid(form)
+
+
+class RetailerOrderListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    template_name = "order/retailer/list.html"
+    model = ProductOrder
+    context_object_name = "orders"
+    permission_required = ("order.retailer_order_list",)
+
+    def get_queryset(self):
+        return ProductOrder.objects.filter(created_by=self.request.user)
