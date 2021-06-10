@@ -10,15 +10,22 @@ from order.models import ProductOrder
 class RetailerOrderProduct(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = ProductOrderForm
     template_name = "order/retailer/create.html"
-    success_url = reverse_lazy("pharmaceutical_order:order_list_view")
+    success_url = reverse_lazy("retailer_order:order_list_view")
     permission_required = ("order.retailer_create_order",)
 
+    # def form_invalid(self, form):
+    #     print(form.errors)
+    #     return super().form_invalid(form)
+
     def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.created_by = self.request.user
+        self.object.producer = self.object.product.producer
         return super().form_valid(form)
 
 
 class RetailerOrderListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
-    template_name = "order/retailer/list.html"
+    template_name = "order/retailer/lists.html"
     model = ProductOrder
     context_object_name = "orders"
     permission_required = ("order.retailer_order_list",)

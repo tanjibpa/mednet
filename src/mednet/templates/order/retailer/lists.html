@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Raw Material Orders {% endblock %}
+{% block title %} Ordered Products {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -25,15 +25,15 @@
             </div>
           </div>
           <div class="col-md-3 text-end">
-            <a class="btn btn-primary" type="button" href="{% url 'pharmaceutical_order:order_create_view' %}">Order new
-              raw material</a>
+            <a class="btn btn-primary" type="button" href="{% url 'retailer_order:order_create_view' %}">Order new
+              Product</a>
           </div>
         </div>
         <div class="row">
           <div class="col-xl-12">
             <div class="card">
               <div class="card-header">
-                <h5>Raw Materials List</h5>
+                <h5>Ordered Products List</h5>
               </div>
               <div class="card-block table-border-style">
                 <div class="table-responsive">
@@ -41,8 +41,9 @@
                     <thead>
                     <tr>
                       <th>#</th>
-                      <th>Raw Material Name</th>
-                      <th>Supplier</th>
+                      <th>Product Name</th>
+                      <th>Producer</th>
+                      <th>Quantity</th>
                       <th>Status</th>
                     </tr>
                     </thead>
@@ -51,9 +52,10 @@
                       <tr>
                         <th scope="row">{{ order.id }}</th>
                         <td>
-                          {{ order.raw_material.name }}
+                          {{ order.product.name }}
                         </td>
-                        <td>{{ order.raw_material.supplier.name }}</td>
+                        <td>{{ order.product.producer.name }}</td>
+                        <td>{{ order.quantity }}</td>
                         <td>{{ order.status }}</td>
                       </tr>
                     {% endfor %}
